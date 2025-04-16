@@ -1,15 +1,33 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Get full name
+        System.out.print("Please enter your name: ");
+        String fullName = scanner.nextLine();
+
+        // Get show date and convert to LocalDate
+        System.out.print("What date will you be coming (MM/dd/yyyy): ");
+        String dateInput = scanner.nextLine();
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("M/d/yyyy");
+        LocalDate showDate = LocalDate.parse(dateInput, inputFormat);
+
+        // Get number of tickets
+        System.out.print("How many tickets would you like? ");
+        int ticketCount = scanner.nextInt();
+
+        // Extract first and last name
+        String[] nameParts = fullName.split(" ");
+        String firstName = nameParts[0];
+        String lastName = nameParts[1];
+
+
+        // Print confirmation message
+        System.out.printf("%d tickets for %s reserved under %s, %s", ticketCount, showDate, lastName, firstName);
+
     }
 }
